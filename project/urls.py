@@ -16,7 +16,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+import degree_checklist.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', degree_checklist.views.welcome_view),
+    path('summary/', degree_checklist.views.student_list),
+    path('program/', degree_checklist.views.major_list),
+    path('college/', degree_checklist.views.faculty_list),
+    path('course/', degree_checklist.views.course_list)
 ]

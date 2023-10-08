@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>College Of</title>
+</head>
+    <body>
+        <header>
+            <nav>  
+                <ul>
+                    <li><a href="/">Home</a>
+                    <li><a href="http://127.0.0.1:8000/summary/">Students</a>
+                    <li><a href="http://127.0.0.1:8000/college/">Colleges Of</a>
+                    <li><a href="http://127.0.0.1:8000/program/">Programs</a>
+                    <li><a href="http://127.0.0.1:8000/course/">Courses</a>
+                </ul>
+            </nav>
+        </header>
+        <h1>List of Colleges at West Texas A&M University</h1>
+        <hr>
+        <ul>
+            {% for item in faculty_list %}
+            <li>
+                <span>{{ item.faculty.college_of }}</span>
+                <br>
+            </li>
+            <br>
+            {% endfor %}
+        </ul>
+    </body>
+</html>

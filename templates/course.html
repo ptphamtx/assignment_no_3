@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Course</title>
+</head>
+    <body>
+        <header>
+            <nav>  
+                <ul>
+                    <li><a href="/">Home</a>
+                    <li><a href="http://127.0.0.1:8000/summary/">Students</a>
+                    <li><a href="http://127.0.0.1:8000/college/">Colleges Of</a>
+                    <li><a href="http://127.0.0.1:8000/program/">Programs</a>
+                    <li><a href="http://127.0.0.1:8000/course/">Courses</a>
+                </ul>
+            </nav>
+        </header>
+        <h1>Courses Available</h1>
+        <hr>
+        <ul>
+            {% for item in course_list %}
+            <li>
+                <span>Course Number: </span> <span>{{ item.course.course_number }}</span>
+                <br>
+                <span>Course Name: </span> <span>{{ item.course.course_name }}</span>
+                <br>
+                <span>Credit Hours: </span> <span>{{ item.course.credit_hours}}</span>
+                <br>
+                <span>From: </span> <span>{{ item.course.faculty}}</span>
+                <br>
+            </li>
+            <br>
+            {% endfor %}
+        </ul>
+    </body>
+</html>

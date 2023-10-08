@@ -7,6 +7,14 @@ class Faculty(models.Model):
     def __str__(self):
         return self.college_of
 
+class Course(models.Model):
+    course_number = models.CharField(max_length=10)
+    course_name = models.CharField(max_length=200, help_text="Name of the course")
+    credit_hours = models.IntegerField(help_text="Number of credit hours")
+    faculty = models.ForeignKey(Faculty, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.course_number
 
 class Major(models.Model):
     major = models.CharField(max_length=200, help_text="Your Major of Study")
@@ -27,15 +35,6 @@ class Student(models.Model):
         return self.first_name
 
 
-class Course(models.Model):
-    course_number = models.CharField(max_length=10)
-    course_name = models.CharField(max_length=200, help_text="Name of the course")
-    credit_hours = models.IntegerField(help_text="Number of credit hours")
-    faculty = models.ForeignKey(Faculty, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return self.course_number
-
 
 class Course_Enrollment(models.Model):
     student = models.ForeignKey(Student, on_delete=models.CASCADE)
@@ -43,6 +42,6 @@ class Course_Enrollment(models.Model):
     semester = models.CharField(max_length=10, help_text="Semester enrolled")
     year = models.IntegerField(help_text="Year enrolled")
 
-    def __str__(self):
+    def str(self):
         return self.student
    
