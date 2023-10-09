@@ -2,6 +2,11 @@
 
 Records students, courses, major they enroll in.
 
+**User stories**
+As a student, I want to see what programs are offered at the university.
+As Dacry, I want to know what courses are available and their information at the university.
+As Luisa, I want to review my student information.
+
 **Conceptual Diagram**
 
 ![Conceptual](https://github.com/ptphamtx/assignment2/assets/113536208/9c2f4a5c-8f68-47a1-b0d6-a5d5177ce9f1)
