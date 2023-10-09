@@ -6,6 +6,7 @@ Records students, courses, major they enroll in.
 * As a student, I want to see what programs are offered at the university.
 * As Dacry, I want to know what courses are available and their information at the university.
 * As Luisa, I want to review my student information.
+-----
 
 **Conceptual Diagram**
 
