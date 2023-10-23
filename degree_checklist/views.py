@@ -1,10 +1,36 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
 from .models import Faculty, Course, Student, Major, Course_Enrollment
+from .forms import RegistrationForm
+from django.contrib import messages
+
 # Create your views here.
+def registration_edit(request, pk=None):
+    if pk is not None:
+        register = get_object_or_404(Course_Enrollment, pk=pk)
+    else:
+        register = None
+    if request.method == "POST":
+        form = RegistrationForm(request.POST, instance = register)
+        if form.is_valid():
+            updated_register = form.save()
+            if register is None:
+                messages.success(request, '"{}" was successfully registered.'.format(updated_register))
+            else:
+                messages.success(request, '"{}" was successfully updated.'.format(updated_register))
+            return redirect("register_edit", updated_register.pk)
+    else:
+        form = RegistrationForm(instance = register)
+    return render(request, "registration_form.html", {"method": request.method, "form": form})
+
+
+def test_view(request):
+    return render(request, 'base.html')
+
 
 def welcome_view(request):
-    return render(request, 'base.html')
+    return render(request, 'home.html')
+
 
 def student_list(request):
     students = Student.objects.all()
@@ -16,9 +42,20 @@ def student_list(request):
     context = {
         'student_list': student_list
     }
-
-
     return render(request, 'summary/summary.html', context)
+
+
+def course_enrollment_list(request):
+    course_enrollments = Course_Enrollment.objects.all()
+    ce_list = []
+    for item in course_enrollments:
+        ce_list.append({'all': item})
+    course_enrollment = {
+        'ce_list': ce_list
+    }       
+    return render(request, 'course_enrollment.html', course_enrollment)
+
+
 
 def major_list(request):
     majors = Major.objects.all()

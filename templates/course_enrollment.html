@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>College Of</title>
+    <title>Programs</title>
 </head>
     <body>
         <header>
@@ -17,12 +17,16 @@
                 </ul>
             </nav>
         </header>
-        <h1>List of Colleges at West Texas A&M University</h1>
+        <h1>Student Enrollments at West Texas A&M University</h1>
         <hr>
         <ul>
-            {% for item in faculty_list %}
+            {% for item in ce_list %}
             <li>
-                <span>{{ item.faculty.college_of }}</span>
+                <span>Student Name: </span><span>{{ item.all.student }}</span>
+                <br>
+                <span>Courses Enrolled: </span>
+                <br>
+                <span>{{  item.all.course }}</span> <span>{{ item.all.semester }} </span> <span>{{ item.all.year }} </span>
                 <br>
             </li>
             <br>

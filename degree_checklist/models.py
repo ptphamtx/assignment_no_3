@@ -13,8 +13,11 @@ class Course(models.Model):
     credit_hours = models.IntegerField(help_text="Number of credit hours")
     faculty = models.ForeignKey(Faculty, on_delete=models.CASCADE)
 
+    def initialled_name3(self):
+        return "{} - {}".format(self.course_number, self.course_name)
+    
     def __str__(self):
-        return self.course_number
+        return self.initialled_name3()
 
 class Major(models.Model):
     major = models.CharField(max_length=200, help_text="Your Major of Study")
@@ -25,14 +28,17 @@ class Major(models.Model):
     
 
 class Student(models.Model):
-    first_name = models.CharField(max_length=200, help_text="The Student's first name")
-    last_name = models.CharField(max_length=200, help_text="The Student's last name")
+    first_name = models.CharField(max_length=200, help_text="Student's first name")
+    last_name = models.CharField(max_length=200, help_text="Student's last name")
     date_of_birth = models.DateField(verbose_name="Date of birth")
     major = models.ForeignKey(Major, on_delete=models.CASCADE) 
     enrollment = models.ManyToManyField("Course", through="Course_Enrollment")
 
+    def initialled_name(self):
+        return "{} {}".format(self.first_name, self.last_name)
+
     def __str__(self):
-        return self.first_name
+        return self.initialled_name()
 
 
 
@@ -42,6 +48,9 @@ class Course_Enrollment(models.Model):
     semester = models.CharField(max_length=10, help_text="Semester enrolled")
     year = models.IntegerField(help_text="Year enrolled")
 
-    def str(self):
-        return self.student
+    def initialled_name2(self):
+        return "{} {} - {} - {}".format(self.year, self.semester, self.course, self.student)
+
+    def __str__(self):
+        return self.initialled_name2()
    

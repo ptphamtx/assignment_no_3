@@ -21,8 +21,12 @@ import degree_checklist.views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', degree_checklist.views.welcome_view),
+    path('test/', degree_checklist.views.test_view),
     path('summary/', degree_checklist.views.student_list),
     path('program/', degree_checklist.views.major_list),
     path('college/', degree_checklist.views.faculty_list),
-    path('course/', degree_checklist.views.course_list)
+    path('course/', degree_checklist.views.course_list),
+    path('course_enrollment/', degree_checklist.views.course_enrollment_list),
+    path('registers/<int:pk>/', degree_checklist.views.registration_edit, name='register_edit'),
+    path('registers/new/', degree_checklist.views.registration_edit, name='register_create')
 ]
