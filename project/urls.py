@@ -17,6 +17,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 import degree_checklist.views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -28,5 +30,6 @@ urlpatterns = [
     path('course/', degree_checklist.views.course_list),
     path('course_enrollment/', degree_checklist.views.course_enrollment_list),
     path('registers/<int:pk>/', degree_checklist.views.registration_edit, name='register_edit'),
-    path('registers/new/', degree_checklist.views.registration_edit, name='register_create')
+    path('registers/new/', degree_checklist.views.registration_edit, name='register_create'),
+    path('upload/', degree_checklist.views.upload)
 ]

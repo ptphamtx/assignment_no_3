@@ -3,8 +3,26 @@ from django.http import HttpResponse
 from .models import Faculty, Course, Student, Major, Course_Enrollment
 from .forms import RegistrationForm
 from django.contrib import messages
+from .forms import UploadForm
+from django.conf import settings
+
 
 # Create your views here.
+def upload(request):
+    if request.method == "POST":
+        form = UploadForm(request.POST, request.FILES)
+
+        if form.is_valid():
+            save_path = settings.MEDIA_ROOT/form.cleaned_data["file_upload"].name
+            with open(save_path, "wb") as output_file:
+                for chunk in form.cleaned_data["file_upload"].chunks():
+                    output_file.write(chunk)
+    else:
+        form = UploadForm()
+
+    return render(request, "document_upload_form.html", {"form": form})
+
+
 def registration_edit(request, pk=None):
     if pk is not None:
         register = get_object_or_404(Course_Enrollment, pk=pk)

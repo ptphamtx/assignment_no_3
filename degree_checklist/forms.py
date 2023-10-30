@@ -11,3 +11,8 @@ class RegistrationForm(forms.ModelForm):
         fields = "__all__"
 
 
+class UploadForm(forms.ModelForm):
+    file_upload = forms.FileField()
+    class Meta:
+        model = Student
+        fields = ("first_name", "last_name", "file_upload")
