@@ -5,9 +5,19 @@ from .forms import RegistrationForm
 from django.contrib import messages
 from .forms import UploadForm
 from django.conf import settings
+from django.contrib.auth.decorators import login_required
+from django.views.generic import TemplateView
 
 
-# Create your views here.
+class logout_page(TemplateView):
+    template_name = 'logged_out.html'
+
+@login_required
+def profile(request):
+    return render(request, "profile.html")
+
+
+@login_required
 def upload(request):
     if request.method == "POST":
         form = UploadForm(request.POST, request.FILES)
@@ -22,7 +32,7 @@ def upload(request):
 
     return render(request, "document_upload_form.html", {"form": form})
 
-
+@login_required
 def registration_edit(request, pk=None):
     if pk is not None:
         register = get_object_or_404(Course_Enrollment, pk=pk)
@@ -42,14 +52,10 @@ def registration_edit(request, pk=None):
     return render(request, "registration_form.html", {"method": request.method, "form": form})
 
 
-def test_view(request):
-    return render(request, 'base.html')
-
-
 def welcome_view(request):
     return render(request, 'home.html')
 
-
+@login_required
 def student_list(request):
     students = Student.objects.all()
     student_list = []
@@ -74,7 +80,6 @@ def course_enrollment_list(request):
     return render(request, 'course_enrollment.html', course_enrollment)
 
 
-
 def major_list(request):
     majors = Major.objects.all()
     major_list = []
@@ -84,6 +89,7 @@ def major_list(request):
         'major_list': major_list
     }
     return render(request, 'program.html', program)
+
 
 def faculty_list(request):
     faculties = Faculty.objects.all()

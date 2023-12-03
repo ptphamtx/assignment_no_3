@@ -31,13 +31,15 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
+    #'degree_checklist.adminconfig.MessageboardAdminConfig',
+    'templates',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'degree_checklist',
+    'django.contrib.admin',
 ]
 
 MIDDLEWARE = [
@@ -126,3 +128,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATICFILES_DIRS = [BASE_DIR / "static"]
 MEDIA_ROOT = BASE_DIR/"upload_storage"
 MEDIA_URL = "/stored/"
+LOGOUT_REDIRECT_URL = 'logout-page'

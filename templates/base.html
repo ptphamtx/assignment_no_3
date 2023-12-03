@@ -3,16 +3,22 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    {% block title %}
     <title>Student Portal</title>
+    {% endblock %}
     {% load static %}
     <link rel="stylesheet" href="{% static 'main.css' %}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville|Source+Sans+Pro&display=swap">
     </style>
   </head>
   <body>
+    {%if user.is_authenticated %}
+      <a class="nav-link" href="/accounts/logout" style="margin-left: 1100px">Logout
+      </a>
+      {% else %}
+      <a class="nav-link" href="/accounts/login" style="margin-left: 1100px">Login</a>
+    {% endif %}
         {% load static %}
-
         <nav class="navbar navbar-expand-sm navbar-dark bg-dark sticky-top">
           <img src="{% static 'logo.png' %}" width="80" height="80">
           <a class="navbar-brand" style="font-size:60px"><strong>STUDENT PORTAL</strong></a>
@@ -20,21 +26,13 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-              <li class="nav-item active">
-                <a class="nav-link" href="/">Home <span class="sr-only"></span></a>
-              </li>
-              <li class="nav-item active">
-                <a class="nav-link" href="http://127.0.0.1:8000/summary/">Student <span class="sr-only"></span></a>
-              </li>
-              <li class="nav-item active">
-                <a class="nav-link" href="http://127.0.0.1:8000/college/">Colleges Of <span class="sr-only"></span></a>
-              </li>
-              <li class="nav-item active">
-                <a class="nav-link" href="http://127.0.0.1:8000/program/">Programs <span class="sr-only"></span></a>
-              </li>
-              <li class="nav-item active">
-                <a class="nav-link" href="http://127.0.0.1:8000/course/">Courses <span class="sr-only"></span></a>
-              </li>
+                <a href="/" style="margin-left: 0px">Home</a>
+                <a href="http://127.0.0.1:8000/summary/" style="margin-left: 50px">Student</a>
+                <a href="http://127.0.0.1:8000/college/" style="margin-left: 50px">Colleges Of </a>
+                <a href="http://127.0.0.1:8000/program/" style="margin-left: 50px">Programs</a>
+                <a href="http://127.0.0.1:8000/course/" style="margin-left: 50px">Courses</a>
+                <a href="http://127.0.0.1:8000/registers/new" style="margin-left: 50px">Registration</a>
+                <a href="http://127.0.0.1:8000/upload/" style="margin-left: 50px">Upload</a>
             </ul>
             <form class="form-inline my-2 my-lg-0">
               <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -42,13 +40,16 @@
             </form>
           </div>
         </nav>
-
-
-  <footer class="page-footer font-small blue">
-    <div class="footer-copyright text-center py-3">&copy; 2023 Copyright:
-      <p>Website by: Phu Pham</p>
-      <p>Contact information: <a href="mailto:ppham1@buffs.wtamu.edu">ppham1@buffs.wtamu.edu</a></p>
-    </div>
-  </footer>
+        {% block content %}
+        {% endblock %} 
+        <br>
+        <br>
+        <br>
+        <footer>
+          <div style="font-size: 12px">&copy; 2023 Copyright:
+            <p>Website by: Phu Pham</p>
+            <p>Contact information: <a href="mailto:ppham1@buffs.wtamu.edu">ppham1@buffs.wtamu.edu</a></p>
+          </div>
+        </footer>
   </body>
 </html>

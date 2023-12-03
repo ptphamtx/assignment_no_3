@@ -1,27 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %}
+
+{% block title %}
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <nav>  
-        <ul>
-            <li><a href="/">Home</a>
-            <li><a href="http://127.0.0.1:8000/summary/">Students</a>
-            <li><a href="http://127.0.0.1:8000/college/">Colleges Of</a>
-            <li><a href="http://127.0.0.1:8000/program/">Programs</a>
-            <li><a href="http://127.0.0.1:8000/course/">Courses</a>
-            <li><a href="http://127.0.0.1:8000/registers/new">Registration</a>
-            <li><a href="http://127.0.0.1:8000/upload">Upload</a>
-        </ul>
-    </nav>
+    <title>Upload Documents</title>
 </head>
-<body>
+{% endblock %}
+
+{% block content %}
+    <br>
     <h1>Upload Your Document</h1>
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Submit</button>
     </form>
-</body>
-</html>
-</html>
+{% endblock %}

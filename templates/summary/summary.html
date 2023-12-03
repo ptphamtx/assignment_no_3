@@ -1,39 +1,28 @@
-<!doctype html>
-<html lang="en">
+{% extends 'base.html' %}
+
+{% block title %}
 <head>
-    <meta charset="utf-8">
-    <title>Student List</title>
+    <title>Summary</title>
 </head>
-    <body>
-        <header>
-            <nav>  
-                <ul>
-                    <li><a href="/">Home</a>
-                    <li><a href="http://127.0.0.1:8000/summary/">Student</a>
-                    <li><a href="http://127.0.0.1:8000/college/">Colleges Of</a>
-                    <li><a href="http://127.0.0.1:8000/program/">Programs</a>
-                    <li><a href="http://127.0.0.1:8000/course/">Courses</a>
-                    <li><a href="http://127.0.0.1:8000/registers/new">Registration</a>
-                    <li><a href="http://127.0.0.1:8000/upload">Upload</a>
-                </ul>
-            </nav>
-        </header>
-        <h1>All Students Data</h1>
-        <hr>
-        <ul>
-            {% for item in student_list %}
-            <li>
-                <span>First Name: </span> <span>{{ item.student.first_name }}</span>
-                <br>
-                <span>Last Name: </span> <span>{{ item.student.last_name }}</span>
-                <br>
-                <span>Date of Birth: </span> <span>{{ item.student.date_of_birth }}</span>
-                <br>
-                <span>Major: </span> <span>{{ item.student.major }}</span>
-                <br>
-            </li>
-            <br>
-            {% endfor %}
-        </ul>
-    </body>
-</html>
+{% endblock %}
+
+{% block content %}
+<br>
+<h1>Student Status</h1>
+<hr>
+<ul>
+    {% for item in student_list %}
+        {% if item.student.first_name == request.user.first_name %}
+        <span>First Name: </span> <span>{{ request.user.first_name }}</span>
+        <br>
+        <span>Last Name: </span> <span>{{ request.user.last_name }}</span>
+        <br>
+        <span>Date of Birth: </span> <span>{{ item.student.date_of_birth }}</span>
+        <br>
+        <span>Major: </span> <span>{{ item.student.major }}</span>
+        <br>
+        {% endif %}
+    <br>
+    {% endfor %}
+</ul>
+{% endblock %}
