@@ -24,8 +24,7 @@ I followed chapter 17 and 18 in the book. Below is the steps I have taken:
 * Installed FileZilla, set up with host as "sftp://192.168.0.33", username (phupham), password (wtamustudent7)
 * Then I transfered my project folder from my local site to remote site
 * Set up python virtual environment and Django, this is where I have trouble continuing. I ran in this error that says *"ERROR: Could not find a version that satisfies the requirement pywin32==306 (from versions: none)"* and *"ERROR: No matching distribution found for pywin32==36"*<br><br>
-![Getting Started](VirtualBox_error.jpg)
-
+![Alt text](VirtualBox_error.JPG)
 <br>
 
 **Assignment 2**
