@@ -1,4 +1,34 @@
-# Assignment 2
+# Web Deployment Process
+I followed chapter 17 and 18 in the book. Below is the steps I have taken:
+
+**VirtualBox:**
+* Installed VirtualBox, then set up Virtual Machine and Operating System with username (*phupham*) and password (*wtamustudent7*)
+* Ubunto Linux installed
+* Configured VirtualBox networking and obtained an IP address 192.168.0.33
+
+**PuTTY:**
+* Installed PuTTY and set up configuration with the obtained IP address from VirtualBox
+* SSH into virtual machine, updated the list of available packages using the command sudo apt update and sudo apt upgrade
+
+**VirutalBox user & database setup, production.conf**
+* In VirtualBox, set up PostgreSQL user and database, with the following commands:<br>
+*sudo -u postgre createuser -P project*<br>
+*sudo -u postgres createdb -O project project*
+* Created a user as follows:<br>
+    Username: *phupham*<br>
+    Password: *wtamustudent7*
+* Also, created a system user with the command: *sudo adduser --disabled-password --shell /bin/false --gecos Project project*
+* Created *production.conf*. In there, I configured STATIC_ROOT, MEDIA_ROOT, DJANGO_CONFIGURATION, DJANGO_SECRET_KEY, DJANGO_DATABASE_URL, DJANGO_ALLOWED_HOSTS
+
+**FileZilla:**
+* Installed FileZilla, set up with host as "sftp://192.168.0.33", username (phupham), password (wtamustudent7)
+* Then I transfered my project folder from my local site to remote site
+* Set up python virtual environment and Django, this is where I have trouble continuing. I ran in this error that says *"ERROR: Could not find a version that satisfies the requirement pywin32==306 (from versions: none)"* and *"ERROR: No matching distribution found for pywin32==36"*<br><br>
+![Getting Started](VirtualBox_error.jpg)
+
+<br>
+
+**Assignment 2**
 
 Records students, courses, major they enroll in.
 
